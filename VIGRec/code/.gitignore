@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+*.pyc
+*.log
+outputs/*
+data/baby/image_feat.npy
+outputs/**/*.pt
+outputs/**/*.pth
+outputs/**/*.ckpt

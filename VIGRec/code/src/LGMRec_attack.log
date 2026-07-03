@@ -1,0 +1,425 @@
+nohup: ignoring input
+==================================================
+🚀 开始多模态对抗攻击测试...
+🔪 攻击目标物品: [283, 1396, 4287, 5643, 6238]
+📦 毒药数据路径: ./Sur-WeightedMF-sgd_fake_data_best.npz
+🛡️ 正在遭受攻击的模型: LGMRec
+==================================================
+06 Mar 20:33    INFO ██Server: 	pd189
+06 Mar 20:33    INFO ██Dir: 	/nas/yrc/workspace/recommend/FGMW-code/MMRec-master/src
+
+06 Mar 20:33    INFO 
+gpu_id=0
+use_gpu=True
+seed=[999]
+data_path=../data/
+inter_splitting_label=x_label
+filter_out_cod_start_users=True
+is_multimodal_model=True
+checkpoint_dir=saved
+save_recommended_topk=True
+recommend_topk=recommend_topk/
+embedding_size=64
+weight_decay=0.0
+req_training=True
+epochs=1000
+stopping_step=20
+train_batch_size=2048
+learner=adam
+learning_rate=0.001
+learning_rate_scheduler=[1.0, 50]
+eval_step=1
+training_neg_sample_num=1
+use_neg_sampling=True
+use_full_sampling=False
+NEG_PREFIX=neg__
+USER_ID_FIELD=userID
+ITEM_ID_FIELD=itemID
+TIME_FIELD=timestamp
+field_separator=	
+metrics=['Recall', 'NDCG', 'Precision', 'MAP']
+topk=[20, 50]
+valid_metric=Recall@20
+eval_batch_size=2048
+use_raw_features=False
+max_txt_len=32
+max_img_size=256
+vocab_size=30522
+type_vocab_size=2
+hidden_size=4
+pad_token_id=0
+max_position_embeddings=512
+layer_norm_eps=1e-12
+hidden_dropout_prob=0.1
+end2end=False
+hyper_parameters=['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']
+inter_file_name=baby.inter
+vision_feature_file=image_feat.npy
+text_feature_file=text_feat.npy
+user_graph_dict_file=user_graph_dict.npy
+feat_embed_dim=64
+cf_model=lightgcn
+n_ui_layers=[2]
+n_mm_layers=[2]
+n_hyper_layer=[1]
+hyper_num=[4]
+keep_rate=[0.5]
+alpha=[0.3]
+cl_weight=[0.0001]
+reg_weight=[1e-06]
+fake_data_path=./Sur-WeightedMF-sgd_fake_data_best.npz
+target_items=[283, 1396, 4287, 5643, 6238]
+model=LGMRec
+dataset=baby
+valid_metric_bigger=True
+device=cuda
+
+
+06 Mar 20:33    INFO ========== 正在注入多模态攻击假数据 ==========
+06 Mar 20:33    INFO 读取路径: ./Sur-WeightedMF-sgd_fake_data_best.npz
+06 Mar 20:33    INFO ✅ 成功注入 194 个假用户，共 11019 条假点击。
+06 Mar 20:33    INFO 更新后用户总数: 19639, 交互总数: 171811
+06 Mar 20:33    INFO ==============================================
+06 Mar 20:33    INFO baby
+The number of users: 19639
+Average actions of users: 8.748459697540609
+The number of items: 7050
+Average actions of items: 24.370354609929077
+The number of inters: 171811
+The sparsity of the dataset: 99.87590837308453%
+06 Mar 20:33    INFO 
+====Training====
+baby
+The number of users: 19639
+Average actions of users: 6.59758643515454
+The number of items: 7047
+Average actions of items: 18.386547467007237
+The number of inters: 129570
+The sparsity of the dataset: 99.90637737427055%
+06 Mar 20:33    INFO 
+====Validation====
+baby
+The number of users: 19445
+Average actions of users: 1.0572897917202366
+The number of items: 5483
+Average actions of items: 3.749589640707642
+The number of inters: 20559
+The sparsity of the dataset: 99.98071694707788%
+06 Mar 20:33    INFO 
+====Testing====
+baby
+The number of users: 19445
+Average actions of users: 1.1150424273592183
+The number of items: 5549
+Average actions of items: 3.907370697422959
+The number of inters: 21682
+The sparsity of the dataset: 99.97990552482683%
+06 Mar 20:33    INFO 
+
+=================================
+
+
+06 Mar 20:33    INFO =========1/1: Parameters:['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(999, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06)=======
+06 Mar 20:33    INFO LGMRec(
+  (hgnnLayer): HGNNLayer()
+  (user_embedding): Embedding(19639, 64)
+  (item_id_embedding): Embedding(7050, 64)
+  (drop): Dropout(p=0.5, inplace=False)
+  (image_embedding): Embedding(7050, 4096)
+  (text_embedding): Embedding(7050, 384)
+)
+Trainable parameters: 33596736
+06 Mar 20:33    INFO epoch 0 training [time: 2.16s, train loss: 266.6600]
+06 Mar 20:33    INFO epoch 0 evaluating [time: 3.71s, valid_score: 0.065300]
+06 Mar 20:33    INFO valid result: 
+recall@20: 0.0653    recall@50: 0.1179    ndcg@20: 0.0284    ndcg@50: 0.0389    precision@20: 0.0034    precision@50: 0.0025    map@20: 0.0179    map@50: 0.0196    Target_HR@20: 0.4361    Target_HR@50: 0.6088    Target_NDCG@20: 0.2202    Target_NDCG@50: 0.2834    
+06 Mar 20:33    INFO test result: 
+recall@20: 0.0699    recall@50: 0.1219    ndcg@20: 0.0303    ndcg@50: 0.0409    precision@20: 0.0039    precision@50: 0.0027    map@20: 0.0187    map@50: 0.0203    Target_HR@20: 0.4357    Target_HR@50: 0.6086    Target_NDCG@20: 0.2202    Target_NDCG@50: 0.2834    
+06 Mar 20:33    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:33    INFO epoch 1 training [time: 2.88s, train loss: 261.8784]
+06 Mar 20:33    INFO epoch 1 evaluating [time: 3.58s, valid_score: 0.071900]
+06 Mar 20:33    INFO valid result: 
+recall@20: 0.0719    recall@50: 0.1291    ndcg@20: 0.0321    ndcg@50: 0.0435    precision@20: 0.0038    precision@50: 0.0027    map@20: 0.0208    map@50: 0.0226    Target_HR@20: 0.3875    Target_HR@50: 0.5719    Target_NDCG@20: 0.1788    Target_NDCG@50: 0.2454    
+06 Mar 20:33    INFO test result: 
+recall@20: 0.0748    recall@50: 0.1296    ndcg@20: 0.0334    ndcg@50: 0.0445    precision@20: 0.0042    precision@50: 0.0029    map@20: 0.0212    map@50: 0.0229    Target_HR@20: 0.3876    Target_HR@50: 0.5719    Target_NDCG@20: 0.1788    Target_NDCG@50: 0.2453    
+06 Mar 20:33    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:33    INFO epoch 2 training [time: 3.04s, train loss: 260.5317]
+06 Mar 20:33    INFO epoch 2 evaluating [time: 3.60s, valid_score: 0.073900]
+06 Mar 20:33    INFO valid result: 
+recall@20: 0.0739    recall@50: 0.1274    ndcg@20: 0.0331    ndcg@50: 0.0438    precision@20: 0.0039    precision@50: 0.0027    map@20: 0.0215    map@50: 0.0232    Target_HR@20: 0.3357    Target_HR@50: 0.4951    Target_NDCG@20: 0.1540    Target_NDCG@50: 0.2100    
+06 Mar 20:33    INFO test result: 
+recall@20: 0.0756    recall@50: 0.1319    ndcg@20: 0.0344    ndcg@50: 0.0458    precision@20: 0.0042    precision@50: 0.0029    map@20: 0.0222    map@50: 0.0240    Target_HR@20: 0.3358    Target_HR@50: 0.4950    Target_NDCG@20: 0.1539    Target_NDCG@50: 0.2100    
+06 Mar 20:33    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:33    INFO epoch 3 training [time: 2.61s, train loss: 259.4802]
+06 Mar 20:33    INFO epoch 3 evaluating [time: 3.50s, valid_score: 0.082900]
+06 Mar 20:33    INFO valid result: 
+recall@20: 0.0829    recall@50: 0.1387    ndcg@20: 0.0367    ndcg@50: 0.0479    precision@20: 0.0044    precision@50: 0.0029    map@20: 0.0236    map@50: 0.0254    Target_HR@20: 0.3714    Target_HR@50: 0.6373    Target_NDCG@20: 0.1360    Target_NDCG@50: 0.2326    
+06 Mar 20:33    INFO test result: 
+recall@20: 0.0828    recall@50: 0.1438    ndcg@20: 0.0378    ndcg@50: 0.0501    precision@20: 0.0046    precision@50: 0.0032    map@20: 0.0244    map@50: 0.0263    Target_HR@20: 0.3716    Target_HR@50: 0.6373    Target_NDCG@20: 0.1360    Target_NDCG@50: 0.2326    
+06 Mar 20:33    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:33    INFO epoch 4 training [time: 2.83s, train loss: 258.6419]
+06 Mar 20:34    INFO epoch 4 evaluating [time: 3.57s, valid_score: 0.084400]
+06 Mar 20:34    INFO valid result: 
+recall@20: 0.0844    recall@50: 0.1421    ndcg@20: 0.0376    ndcg@50: 0.0491    precision@20: 0.0044    precision@50: 0.0030    map@20: 0.0242    map@50: 0.0261    Target_HR@20: 0.3912    Target_HR@50: 0.6522    Target_NDCG@20: 0.1421    Target_NDCG@50: 0.2386    
+06 Mar 20:34    INFO test result: 
+recall@20: 0.0847    recall@50: 0.1449    ndcg@20: 0.0386    ndcg@50: 0.0508    precision@20: 0.0047    precision@50: 0.0032    map@20: 0.0249    map@50: 0.0268    Target_HR@20: 0.3914    Target_HR@50: 0.6522    Target_NDCG@20: 0.1421    Target_NDCG@50: 0.2386    
+06 Mar 20:34    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:34    INFO epoch 5 training [time: 4.09s, train loss: 257.7979]
+06 Mar 20:34    INFO epoch 5 evaluating [time: 3.52s, valid_score: 0.086400]
+06 Mar 20:34    INFO valid result: 
+recall@20: 0.0864    recall@50: 0.1444    ndcg@20: 0.0384    ndcg@50: 0.0500    precision@20: 0.0045    precision@50: 0.0031    map@20: 0.0247    map@50: 0.0265    Target_HR@20: 0.3038    Target_HR@50: 0.6049    Target_NDCG@20: 0.1015    Target_NDCG@50: 0.2063    
+06 Mar 20:34    INFO test result: 
+recall@20: 0.0888    recall@50: 0.1489    ndcg@20: 0.0400    ndcg@50: 0.0521    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0256    map@50: 0.0274    Target_HR@20: 0.3038    Target_HR@50: 0.6049    Target_NDCG@20: 0.1015    Target_NDCG@50: 0.2063    
+06 Mar 20:34    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:34    INFO epoch 6 training [time: 3.32s, train loss: 257.2994]
+06 Mar 20:34    INFO epoch 6 evaluating [time: 3.51s, valid_score: 0.087400]
+06 Mar 20:34    INFO valid result: 
+recall@20: 0.0874    recall@50: 0.1451    ndcg@20: 0.0386    ndcg@50: 0.0501    precision@20: 0.0046    precision@50: 0.0031    map@20: 0.0247    map@50: 0.0265    Target_HR@20: 0.3053    Target_HR@50: 0.5558    Target_NDCG@20: 0.1085    Target_NDCG@50: 0.1969    
+06 Mar 20:34    INFO test result: 
+recall@20: 0.0872    recall@50: 0.1485    ndcg@20: 0.0396    ndcg@50: 0.0520    precision@20: 0.0048    precision@50: 0.0033    map@20: 0.0254    map@50: 0.0273    Target_HR@20: 0.3052    Target_HR@50: 0.5559    Target_NDCG@20: 0.1085    Target_NDCG@50: 0.1969    
+06 Mar 20:34    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:34    INFO epoch 7 training [time: 2.82s, train loss: 256.9233]
+06 Mar 20:34    INFO epoch 7 evaluating [time: 3.62s, valid_score: 0.086700]
+06 Mar 20:34    INFO valid result: 
+recall@20: 0.0867    recall@50: 0.1458    ndcg@20: 0.0387    ndcg@50: 0.0505    precision@20: 0.0046    precision@50: 0.0031    map@20: 0.0249    map@50: 0.0267    Target_HR@20: 0.2716    Target_HR@50: 0.5242    Target_NDCG@20: 0.0941    Target_NDCG@50: 0.1796    
+06 Mar 20:34    INFO test result: 
+recall@20: 0.0887    recall@50: 0.1512    ndcg@20: 0.0401    ndcg@50: 0.0527    precision@20: 0.0049    precision@50: 0.0034    map@20: 0.0256    map@50: 0.0276    Target_HR@20: 0.2716    Target_HR@50: 0.5245    Target_NDCG@20: 0.0941    Target_NDCG@50: 0.1796    
+06 Mar 20:34    INFO epoch 8 training [time: 2.70s, train loss: 256.3873]
+06 Mar 20:34    INFO epoch 8 evaluating [time: 3.57s, valid_score: 0.089100]
+06 Mar 20:34    INFO valid result: 
+recall@20: 0.0891    recall@50: 0.1458    ndcg@20: 0.0396    ndcg@50: 0.0509    precision@20: 0.0047    precision@50: 0.0031    map@20: 0.0254    map@50: 0.0272    Target_HR@20: 0.1986    Target_HR@50: 0.4390    Target_NDCG@20: 0.0647    Target_NDCG@50: 0.1414    
+06 Mar 20:34    INFO test result: 
+recall@20: 0.0897    recall@50: 0.1520    ndcg@20: 0.0405    ndcg@50: 0.0531    precision@20: 0.0050    precision@50: 0.0034    map@20: 0.0259    map@50: 0.0279    Target_HR@20: 0.1986    Target_HR@50: 0.4390    Target_NDCG@20: 0.0647    Target_NDCG@50: 0.1414    
+06 Mar 20:34    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:34    INFO epoch 9 training [time: 4.89s, train loss: 255.7574]
+06 Mar 20:34    INFO epoch 9 evaluating [time: 3.53s, valid_score: 0.089700]
+06 Mar 20:34    INFO valid result: 
+recall@20: 0.0897    recall@50: 0.1495    ndcg@20: 0.0398    ndcg@50: 0.0517    precision@20: 0.0047    precision@50: 0.0032    map@20: 0.0255    map@50: 0.0274    Target_HR@20: 0.2103    Target_HR@50: 0.4938    Target_NDCG@20: 0.0639    Target_NDCG@50: 0.1572    
+06 Mar 20:34    INFO test result: 
+recall@20: 0.0926    recall@50: 0.1547    ndcg@20: 0.0416    ndcg@50: 0.0542    precision@20: 0.0051    precision@50: 0.0034    map@20: 0.0266    map@50: 0.0286    Target_HR@20: 0.2104    Target_HR@50: 0.4938    Target_NDCG@20: 0.0639    Target_NDCG@50: 0.1572    
+06 Mar 20:34    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:34    INFO epoch 10 training [time: 3.19s, train loss: 255.2792]
+06 Mar 20:35    INFO epoch 10 evaluating [time: 3.48s, valid_score: 0.090600]
+06 Mar 20:35    INFO valid result: 
+recall@20: 0.0906    recall@50: 0.1477    ndcg@20: 0.0402    ndcg@50: 0.0516    precision@20: 0.0048    precision@50: 0.0031    map@20: 0.0258    map@50: 0.0276    Target_HR@20: 0.1897    Target_HR@50: 0.4492    Target_NDCG@20: 0.0578    Target_NDCG@50: 0.1417    
+06 Mar 20:35    INFO test result: 
+recall@20: 0.0915    recall@50: 0.1538    ndcg@20: 0.0415    ndcg@50: 0.0541    precision@20: 0.0051    precision@50: 0.0034    map@20: 0.0266    map@50: 0.0286    Target_HR@20: 0.1898    Target_HR@50: 0.4491    Target_NDCG@20: 0.0578    Target_NDCG@50: 0.1417    
+06 Mar 20:35    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:35    INFO epoch 11 training [time: 2.57s, train loss: 255.1430]
+06 Mar 20:35    INFO epoch 11 evaluating [time: 3.48s, valid_score: 0.090400]
+06 Mar 20:35    INFO valid result: 
+recall@20: 0.0904    recall@50: 0.1505    ndcg@20: 0.0404    ndcg@50: 0.0525    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0261    map@50: 0.0280    Target_HR@20: 0.1412    Target_HR@50: 0.3863    Target_NDCG@20: 0.0418    Target_NDCG@50: 0.1152    
+06 Mar 20:35    INFO test result: 
+recall@20: 0.0926    recall@50: 0.1564    ndcg@20: 0.0419    ndcg@50: 0.0548    precision@20: 0.0051    precision@50: 0.0035    map@20: 0.0268    map@50: 0.0288    Target_HR@20: 0.1413    Target_HR@50: 0.3865    Target_NDCG@20: 0.0418    Target_NDCG@50: 0.1152    
+06 Mar 20:35    INFO epoch 12 training [time: 3.22s, train loss: 254.8400]
+06 Mar 20:35    INFO epoch 12 evaluating [time: 3.61s, valid_score: 0.090400]
+06 Mar 20:35    INFO valid result: 
+recall@20: 0.0904    recall@50: 0.1510    ndcg@20: 0.0403    ndcg@50: 0.0525    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0260    map@50: 0.0279    Target_HR@20: 0.1413    Target_HR@50: 0.3583    Target_NDCG@20: 0.0418    Target_NDCG@50: 0.1064    
+06 Mar 20:35    INFO test result: 
+recall@20: 0.0928    recall@50: 0.1572    ndcg@20: 0.0418    ndcg@50: 0.0548    precision@20: 0.0051    precision@50: 0.0035    map@20: 0.0266    map@50: 0.0287    Target_HR@20: 0.1412    Target_HR@50: 0.3584    Target_NDCG@20: 0.0417    Target_NDCG@50: 0.1065    
+06 Mar 20:35    INFO epoch 13 training [time: 2.71s, train loss: 254.3529]
+06 Mar 20:35    INFO epoch 13 evaluating [time: 3.50s, valid_score: 0.092200]
+06 Mar 20:35    INFO valid result: 
+recall@20: 0.0922    recall@50: 0.1529    ndcg@20: 0.0411    ndcg@50: 0.0532    precision@20: 0.0049    precision@50: 0.0032    map@20: 0.0265    map@50: 0.0284    Target_HR@20: 0.1000    Target_HR@50: 0.3383    Target_NDCG@20: 0.0265    Target_NDCG@50: 0.0954    
+06 Mar 20:35    INFO test result: 
+recall@20: 0.0942    recall@50: 0.1590    ndcg@20: 0.0422    ndcg@50: 0.0553    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0268    map@50: 0.0288    Target_HR@20: 0.1000    Target_HR@50: 0.3386    Target_NDCG@20: 0.0265    Target_NDCG@50: 0.0954    
+06 Mar 20:35    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:35    INFO epoch 14 training [time: 3.35s, train loss: 253.9739]
+06 Mar 20:35    INFO epoch 14 evaluating [time: 3.71s, valid_score: 0.091500]
+06 Mar 20:35    INFO valid result: 
+recall@20: 0.0915    recall@50: 0.1507    ndcg@20: 0.0403    ndcg@50: 0.0521    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0257    map@50: 0.0276    Target_HR@20: 0.1162    Target_HR@50: 0.3123    Target_NDCG@20: 0.0347    Target_NDCG@50: 0.0918    
+06 Mar 20:35    INFO test result: 
+recall@20: 0.0945    recall@50: 0.1578    ndcg@20: 0.0419    ndcg@50: 0.0547    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0263    map@50: 0.0284    Target_HR@20: 0.1163    Target_HR@50: 0.3124    Target_NDCG@20: 0.0347    Target_NDCG@50: 0.0918    
+06 Mar 20:35    INFO epoch 15 training [time: 2.83s, train loss: 253.8732]
+06 Mar 20:35    INFO epoch 15 evaluating [time: 3.58s, valid_score: 0.091400]
+06 Mar 20:35    INFO valid result: 
+recall@20: 0.0914    recall@50: 0.1517    ndcg@20: 0.0409    ndcg@50: 0.0529    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0264    map@50: 0.0283    Target_HR@20: 0.0506    Target_HR@50: 0.1710    Target_NDCG@20: 0.0133    Target_NDCG@50: 0.0441    
+06 Mar 20:35    INFO test result: 
+recall@20: 0.0930    recall@50: 0.1583    ndcg@20: 0.0421    ndcg@50: 0.0553    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0269    map@50: 0.0290    Target_HR@20: 0.0504    Target_HR@50: 0.1714    Target_NDCG@20: 0.0133    Target_NDCG@50: 0.0441    
+06 Mar 20:35    INFO epoch 16 training [time: 3.74s, train loss: 253.5417]
+06 Mar 20:36    INFO epoch 16 evaluating [time: 3.55s, valid_score: 0.090000]
+06 Mar 20:36    INFO valid result: 
+recall@20: 0.0900    recall@50: 0.1514    ndcg@20: 0.0401    ndcg@50: 0.0524    precision@20: 0.0047    precision@50: 0.0032    map@20: 0.0258    map@50: 0.0277    Target_HR@20: 0.0851    Target_HR@50: 0.2315    Target_NDCG@20: 0.0242    Target_NDCG@50: 0.0667    
+06 Mar 20:36    INFO test result: 
+recall@20: 0.0943    recall@50: 0.1549    ndcg@20: 0.0418    ndcg@50: 0.0541    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0264    map@50: 0.0283    Target_HR@20: 0.0851    Target_HR@50: 0.2315    Target_NDCG@20: 0.0242    Target_NDCG@50: 0.0667    
+06 Mar 20:36    INFO epoch 17 training [time: 2.60s, train loss: 253.1967]
+06 Mar 20:36    INFO epoch 17 evaluating [time: 3.52s, valid_score: 0.091000]
+06 Mar 20:36    INFO valid result: 
+recall@20: 0.0910    recall@50: 0.1501    ndcg@20: 0.0405    ndcg@50: 0.0523    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0260    map@50: 0.0279    Target_HR@20: 0.0580    Target_HR@50: 0.1849    Target_NDCG@20: 0.0157    Target_NDCG@50: 0.0500    
+06 Mar 20:36    INFO test result: 
+recall@20: 0.0939    recall@50: 0.1575    ndcg@20: 0.0418    ndcg@50: 0.0547    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0264    map@50: 0.0284    Target_HR@20: 0.0583    Target_HR@50: 0.1849    Target_NDCG@20: 0.0158    Target_NDCG@50: 0.0500    
+06 Mar 20:36    INFO epoch 18 training [time: 3.10s, train loss: 253.0310]
+06 Mar 20:36    INFO epoch 18 evaluating [time: 3.50s, valid_score: 0.089700]
+06 Mar 20:36    INFO valid result: 
+recall@20: 0.0897    recall@50: 0.1496    ndcg@20: 0.0401    ndcg@50: 0.0521    precision@20: 0.0047    precision@50: 0.0032    map@20: 0.0258    map@50: 0.0277    Target_HR@20: 0.0640    Target_HR@50: 0.1876    Target_NDCG@20: 0.0185    Target_NDCG@50: 0.0522    
+06 Mar 20:36    INFO test result: 
+recall@20: 0.0927    recall@50: 0.1550    ndcg@20: 0.0416    ndcg@50: 0.0542    precision@20: 0.0051    precision@50: 0.0035    map@20: 0.0264    map@50: 0.0284    Target_HR@20: 0.0638    Target_HR@50: 0.1879    Target_NDCG@20: 0.0184    Target_NDCG@50: 0.0522    
+06 Mar 20:36    INFO epoch 19 training [time: 2.48s, train loss: 252.7485]
+06 Mar 20:36    INFO epoch 19 evaluating [time: 3.57s, valid_score: 0.091700]
+06 Mar 20:36    INFO valid result: 
+recall@20: 0.0917    recall@50: 0.1546    ndcg@20: 0.0408    ndcg@50: 0.0533    precision@20: 0.0048    precision@50: 0.0033    map@20: 0.0262    map@50: 0.0281    Target_HR@20: 0.0641    Target_HR@50: 0.2306    Target_NDCG@20: 0.0173    Target_NDCG@50: 0.0628    
+06 Mar 20:36    INFO test result: 
+recall@20: 0.0951    recall@50: 0.1595    ndcg@20: 0.0425    ndcg@50: 0.0555    precision@20: 0.0052    precision@50: 0.0036    map@20: 0.0269    map@50: 0.0289    Target_HR@20: 0.0641    Target_HR@50: 0.2308    Target_NDCG@20: 0.0173    Target_NDCG@50: 0.0628    
+06 Mar 20:36    INFO epoch 20 training [time: 2.19s, train loss: 252.5918]
+06 Mar 20:36    INFO epoch 20 evaluating [time: 3.55s, valid_score: 0.093100]
+06 Mar 20:36    INFO valid result: 
+recall@20: 0.0931    recall@50: 0.1544    ndcg@20: 0.0412    ndcg@50: 0.0535    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0264    map@50: 0.0283    Target_HR@20: 0.0542    Target_HR@50: 0.1980    Target_NDCG@20: 0.0144    Target_NDCG@50: 0.0531    
+06 Mar 20:36    INFO test result: 
+recall@20: 0.0953    recall@50: 0.1595    ndcg@20: 0.0428    ndcg@50: 0.0559    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0273    map@50: 0.0294    Target_HR@20: 0.0543    Target_HR@50: 0.1983    Target_NDCG@20: 0.0145    Target_NDCG@50: 0.0531    
+06 Mar 20:36    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:36    INFO epoch 21 training [time: 3.12s, train loss: 252.3034]
+06 Mar 20:36    INFO epoch 21 evaluating [time: 3.50s, valid_score: 0.094100]
+06 Mar 20:36    INFO valid result: 
+recall@20: 0.0941    recall@50: 0.1550    ndcg@20: 0.0414    ndcg@50: 0.0536    precision@20: 0.0050    precision@50: 0.0033    map@20: 0.0263    map@50: 0.0282    Target_HR@20: 0.0598    Target_HR@50: 0.2526    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    
+06 Mar 20:36    INFO test result: 
+recall@20: 0.0959    recall@50: 0.1612    ndcg@20: 0.0431    ndcg@50: 0.0564    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0275    map@50: 0.0296    Target_HR@20: 0.0602    Target_HR@50: 0.2524    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    
+06 Mar 20:36    INFO ██ LGMRec--Best validation results updated!!!
+06 Mar 20:36    INFO epoch 22 training [time: 2.70s, train loss: 252.2817]
+06 Mar 20:37    INFO epoch 22 evaluating [time: 3.52s, valid_score: 0.091800]
+06 Mar 20:37    INFO valid result: 
+recall@20: 0.0918    recall@50: 0.1541    ndcg@20: 0.0406    ndcg@50: 0.0530    precision@20: 0.0048    precision@50: 0.0033    map@20: 0.0260    map@50: 0.0279    Target_HR@20: 0.0535    Target_HR@50: 0.1763    Target_NDCG@20: 0.0140    Target_NDCG@50: 0.0463    
+06 Mar 20:37    INFO test result: 
+recall@20: 0.0948    recall@50: 0.1573    ndcg@20: 0.0426    ndcg@50: 0.0553    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0272    map@50: 0.0292    Target_HR@20: 0.0535    Target_HR@50: 0.1763    Target_NDCG@20: 0.0139    Target_NDCG@50: 0.0463    
+06 Mar 20:37    INFO epoch 23 training [time: 2.86s, train loss: 252.0911]
+06 Mar 20:37    INFO epoch 23 evaluating [time: 3.68s, valid_score: 0.093300]
+06 Mar 20:37    INFO valid result: 
+recall@20: 0.0933    recall@50: 0.1556    ndcg@20: 0.0413    ndcg@50: 0.0538    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0265    map@50: 0.0284    Target_HR@20: 0.0373    Target_HR@50: 0.1570    Target_NDCG@20: 0.0091    Target_NDCG@50: 0.0394    
+06 Mar 20:37    INFO test result: 
+recall@20: 0.0962    recall@50: 0.1625    ndcg@20: 0.0431    ndcg@50: 0.0565    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0273    map@50: 0.0294    Target_HR@20: 0.0373    Target_HR@50: 0.1571    Target_NDCG@20: 0.0090    Target_NDCG@50: 0.0394    
+06 Mar 20:37    INFO epoch 24 training [time: 4.03s, train loss: 251.6714]
+06 Mar 20:37    INFO epoch 24 evaluating [time: 3.56s, valid_score: 0.090400]
+06 Mar 20:37    INFO valid result: 
+recall@20: 0.0904    recall@50: 0.1528    ndcg@20: 0.0405    ndcg@50: 0.0529    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0261    map@50: 0.0280    Target_HR@20: 0.0682    Target_HR@50: 0.2119    Target_NDCG@20: 0.0196    Target_NDCG@50: 0.0590    
+06 Mar 20:37    INFO test result: 
+recall@20: 0.0918    recall@50: 0.1562    ndcg@20: 0.0421    ndcg@50: 0.0552    precision@20: 0.0051    precision@50: 0.0035    map@20: 0.0273    map@50: 0.0293    Target_HR@20: 0.0683    Target_HR@50: 0.2119    Target_NDCG@20: 0.0196    Target_NDCG@50: 0.0590    
+06 Mar 20:37    INFO epoch 25 training [time: 3.04s, train loss: 251.6136]
+06 Mar 20:37    INFO epoch 25 evaluating [time: 3.53s, valid_score: 0.091100]
+06 Mar 20:37    INFO valid result: 
+recall@20: 0.0911    recall@50: 0.1529    ndcg@20: 0.0409    ndcg@50: 0.0533    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0265    map@50: 0.0285    Target_HR@20: 0.0255    Target_HR@50: 0.0979    Target_NDCG@20: 0.0065    Target_NDCG@50: 0.0246    
+06 Mar 20:37    INFO test result: 
+recall@20: 0.0930    recall@50: 0.1584    ndcg@20: 0.0421    ndcg@50: 0.0554    precision@20: 0.0051    precision@50: 0.0035    map@20: 0.0269    map@50: 0.0290    Target_HR@20: 0.0253    Target_HR@50: 0.0981    Target_NDCG@20: 0.0065    Target_NDCG@50: 0.0246    
+06 Mar 20:37    INFO epoch 26 training [time: 2.78s, train loss: 251.3781]
+06 Mar 20:37    INFO epoch 26 evaluating [time: 3.49s, valid_score: 0.092100]
+06 Mar 20:37    INFO valid result: 
+recall@20: 0.0921    recall@50: 0.1546    ndcg@20: 0.0410    ndcg@50: 0.0536    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0264    map@50: 0.0284    Target_HR@20: 0.0357    Target_HR@50: 0.1570    Target_NDCG@20: 0.0092    Target_NDCG@50: 0.0397    
+06 Mar 20:37    INFO test result: 
+recall@20: 0.0946    recall@50: 0.1616    ndcg@20: 0.0424    ndcg@50: 0.0559    precision@20: 0.0052    precision@50: 0.0036    map@20: 0.0269    map@50: 0.0290    Target_HR@20: 0.0359    Target_HR@50: 0.1571    Target_NDCG@20: 0.0092    Target_NDCG@50: 0.0397    
+06 Mar 20:37    INFO epoch 27 training [time: 1.98s, train loss: 251.2771]
+06 Mar 20:37    INFO epoch 27 evaluating [time: 3.50s, valid_score: 0.089900]
+06 Mar 20:37    INFO valid result: 
+recall@20: 0.0899    recall@50: 0.1512    ndcg@20: 0.0401    ndcg@50: 0.0523    precision@20: 0.0047    precision@50: 0.0032    map@20: 0.0258    map@50: 0.0277    Target_HR@20: 0.0382    Target_HR@50: 0.1330    Target_NDCG@20: 0.0103    Target_NDCG@50: 0.0348    
+06 Mar 20:37    INFO test result: 
+recall@20: 0.0916    recall@50: 0.1546    ndcg@20: 0.0413    ndcg@50: 0.0540    precision@20: 0.0051    precision@50: 0.0035    map@20: 0.0263    map@50: 0.0283    Target_HR@20: 0.0380    Target_HR@50: 0.1327    Target_NDCG@20: 0.0103    Target_NDCG@50: 0.0347    
+06 Mar 20:37    INFO epoch 28 training [time: 1.99s, train loss: 250.9988]
+06 Mar 20:38    INFO epoch 28 evaluating [time: 4.19s, valid_score: 0.093100]
+06 Mar 20:38    INFO valid result: 
+recall@20: 0.0931    recall@50: 0.1579    ndcg@20: 0.0413    ndcg@50: 0.0542    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0265    map@50: 0.0285    Target_HR@20: 0.0302    Target_HR@50: 0.1395    Target_NDCG@20: 0.0076    Target_NDCG@50: 0.0351    
+06 Mar 20:38    INFO test result: 
+recall@20: 0.0948    recall@50: 0.1624    ndcg@20: 0.0428    ndcg@50: 0.0565    precision@20: 0.0052    precision@50: 0.0036    map@20: 0.0274    map@50: 0.0296    Target_HR@20: 0.0304    Target_HR@50: 0.1395    Target_NDCG@20: 0.0077    Target_NDCG@50: 0.0351    
+06 Mar 20:38    INFO epoch 29 training [time: 3.66s, train loss: 250.9652]
+06 Mar 20:38    INFO epoch 29 evaluating [time: 3.55s, valid_score: 0.093800]
+06 Mar 20:38    INFO valid result: 
+recall@20: 0.0938    recall@50: 0.1568    ndcg@20: 0.0414    ndcg@50: 0.0540    precision@20: 0.0050    precision@50: 0.0033    map@20: 0.0265    map@50: 0.0285    Target_HR@20: 0.0355    Target_HR@50: 0.1868    Target_NDCG@20: 0.0081    Target_NDCG@50: 0.0467    
+06 Mar 20:38    INFO test result: 
+recall@20: 0.0968    recall@50: 0.1625    ndcg@20: 0.0433    ndcg@50: 0.0567    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0275    map@50: 0.0296    Target_HR@20: 0.0354    Target_HR@50: 0.1866    Target_NDCG@20: 0.0081    Target_NDCG@50: 0.0467    
+06 Mar 20:38    INFO epoch 30 training [time: 2.75s, train loss: 250.7515]
+06 Mar 20:38    INFO epoch 30 evaluating [time: 3.54s, valid_score: 0.092100]
+06 Mar 20:38    INFO valid result: 
+recall@20: 0.0921    recall@50: 0.1548    ndcg@20: 0.0411    ndcg@50: 0.0536    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0265    map@50: 0.0284    Target_HR@20: 0.0283    Target_HR@50: 0.1245    Target_NDCG@20: 0.0066    Target_NDCG@50: 0.0297    
+06 Mar 20:38    INFO test result: 
+recall@20: 0.0952    recall@50: 0.1621    ndcg@20: 0.0429    ndcg@50: 0.0565    precision@20: 0.0052    precision@50: 0.0036    map@20: 0.0274    map@50: 0.0296    Target_HR@20: 0.0282    Target_HR@50: 0.1242    Target_NDCG@20: 0.0066    Target_NDCG@50: 0.0297    
+06 Mar 20:38    INFO epoch 31 training [time: 2.86s, train loss: 250.6269]
+06 Mar 20:38    INFO epoch 31 evaluating [time: 3.55s, valid_score: 0.092800]
+06 Mar 20:38    INFO valid result: 
+recall@20: 0.0928    recall@50: 0.1559    ndcg@20: 0.0412    ndcg@50: 0.0538    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0265    map@50: 0.0284    Target_HR@20: 0.0398    Target_HR@50: 0.1803    Target_NDCG@20: 0.0097    Target_NDCG@50: 0.0454    
+06 Mar 20:38    INFO test result: 
+recall@20: 0.0960    recall@50: 0.1614    ndcg@20: 0.0428    ndcg@50: 0.0561    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0271    map@50: 0.0292    Target_HR@20: 0.0398    Target_HR@50: 0.1798    Target_NDCG@20: 0.0098    Target_NDCG@50: 0.0454    
+06 Mar 20:38    INFO epoch 32 training [time: 1.82s, train loss: 250.5701]
+06 Mar 20:38    INFO epoch 32 evaluating [time: 3.48s, valid_score: 0.093500]
+06 Mar 20:38    INFO valid result: 
+recall@20: 0.0935    recall@50: 0.1577    ndcg@20: 0.0412    ndcg@50: 0.0540    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0262    map@50: 0.0283    Target_HR@20: 0.0435    Target_HR@50: 0.2020    Target_NDCG@20: 0.0098    Target_NDCG@50: 0.0491    
+06 Mar 20:38    INFO test result: 
+recall@20: 0.0967    recall@50: 0.1632    ndcg@20: 0.0430    ndcg@50: 0.0565    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0271    map@50: 0.0292    Target_HR@20: 0.0436    Target_HR@50: 0.2020    Target_NDCG@20: 0.0098    Target_NDCG@50: 0.0491    
+06 Mar 20:38    INFO epoch 33 training [time: 1.86s, train loss: 250.3059]
+06 Mar 20:38    INFO epoch 33 evaluating [time: 3.50s, valid_score: 0.093100]
+06 Mar 20:38    INFO valid result: 
+recall@20: 0.0931    recall@50: 0.1575    ndcg@20: 0.0412    ndcg@50: 0.0540    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0264    map@50: 0.0284    Target_HR@20: 0.0440    Target_HR@50: 0.1902    Target_NDCG@20: 0.0106    Target_NDCG@50: 0.0483    
+06 Mar 20:38    INFO test result: 
+recall@20: 0.0964    recall@50: 0.1617    ndcg@20: 0.0428    ndcg@50: 0.0561    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0270    map@50: 0.0291    Target_HR@20: 0.0442    Target_HR@50: 0.1906    Target_NDCG@20: 0.0107    Target_NDCG@50: 0.0483    
+06 Mar 20:38    INFO epoch 34 training [time: 1.79s, train loss: 250.2842]
+06 Mar 20:39    INFO epoch 34 evaluating [time: 3.49s, valid_score: 0.090000]
+06 Mar 20:39    INFO valid result: 
+recall@20: 0.0900    recall@50: 0.1497    ndcg@20: 0.0407    ndcg@50: 0.0527    precision@20: 0.0047    precision@50: 0.0032    map@20: 0.0266    map@50: 0.0285    Target_HR@20: 0.0346    Target_HR@50: 0.1201    Target_NDCG@20: 0.0093    Target_NDCG@50: 0.0315    
+06 Mar 20:39    INFO test result: 
+recall@20: 0.0919    recall@50: 0.1553    ndcg@20: 0.0414    ndcg@50: 0.0542    precision@20: 0.0051    precision@50: 0.0035    map@20: 0.0264    map@50: 0.0284    Target_HR@20: 0.0346    Target_HR@50: 0.1203    Target_NDCG@20: 0.0094    Target_NDCG@50: 0.0315    
+06 Mar 20:39    INFO epoch 35 training [time: 3.89s, train loss: 250.2292]
+06 Mar 20:39    INFO epoch 35 evaluating [time: 3.54s, valid_score: 0.089000]
+06 Mar 20:39    INFO valid result: 
+recall@20: 0.0890    recall@50: 0.1461    ndcg@20: 0.0393    ndcg@50: 0.0508    precision@20: 0.0047    precision@50: 0.0031    map@20: 0.0251    map@50: 0.0269    Target_HR@20: 0.0331    Target_HR@50: 0.1238    Target_NDCG@20: 0.0089    Target_NDCG@50: 0.0321    
+06 Mar 20:39    INFO test result: 
+recall@20: 0.0898    recall@50: 0.1522    ndcg@20: 0.0407    ndcg@50: 0.0533    precision@20: 0.0050    precision@50: 0.0034    map@20: 0.0262    map@50: 0.0281    Target_HR@20: 0.0333    Target_HR@50: 0.1237    Target_NDCG@20: 0.0089    Target_NDCG@50: 0.0321    
+06 Mar 20:39    INFO epoch 36 training [time: 2.80s, train loss: 250.4046]
+06 Mar 20:39    INFO epoch 36 evaluating [time: 3.56s, valid_score: 0.091500]
+06 Mar 20:39    INFO valid result: 
+recall@20: 0.0915    recall@50: 0.1551    ndcg@20: 0.0408    ndcg@50: 0.0535    precision@20: 0.0048    precision@50: 0.0033    map@20: 0.0263    map@50: 0.0283    Target_HR@20: 0.0216    Target_HR@50: 0.1168    Target_NDCG@20: 0.0048    Target_NDCG@50: 0.0263    
+06 Mar 20:39    INFO test result: 
+recall@20: 0.0943    recall@50: 0.1579    ndcg@20: 0.0424    ndcg@50: 0.0553    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0270    map@50: 0.0290    Target_HR@20: 0.0217    Target_HR@50: 0.1168    Target_NDCG@20: 0.0048    Target_NDCG@50: 0.0264    
+06 Mar 20:39    INFO epoch 37 training [time: 2.48s, train loss: 249.9365]
+06 Mar 20:39    INFO epoch 37 evaluating [time: 3.52s, valid_score: 0.090700]
+06 Mar 20:39    INFO valid result: 
+recall@20: 0.0907    recall@50: 0.1504    ndcg@20: 0.0409    ndcg@50: 0.0529    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0267    map@50: 0.0286    Target_HR@20: 0.0368    Target_HR@50: 0.1312    Target_NDCG@20: 0.0092    Target_NDCG@50: 0.0332    
+06 Mar 20:39    INFO test result: 
+recall@20: 0.0937    recall@50: 0.1567    ndcg@20: 0.0421    ndcg@50: 0.0549    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0268    map@50: 0.0288    Target_HR@20: 0.0368    Target_HR@50: 0.1315    Target_NDCG@20: 0.0092    Target_NDCG@50: 0.0333    
+06 Mar 20:39    INFO epoch 38 training [time: 3.11s, train loss: 249.6652]
+06 Mar 20:39    INFO epoch 38 evaluating [time: 3.48s, valid_score: 0.090800]
+06 Mar 20:39    INFO valid result: 
+recall@20: 0.0908    recall@50: 0.1529    ndcg@20: 0.0407    ndcg@50: 0.0531    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0263    map@50: 0.0282    Target_HR@20: 0.0243    Target_HR@50: 0.1034    Target_NDCG@20: 0.0059    Target_NDCG@50: 0.0241    
+06 Mar 20:39    INFO test result: 
+recall@20: 0.0934    recall@50: 0.1588    ndcg@20: 0.0420    ndcg@50: 0.0553    precision@20: 0.0051    precision@50: 0.0036    map@20: 0.0268    map@50: 0.0289    Target_HR@20: 0.0242    Target_HR@50: 0.1031    Target_NDCG@20: 0.0059    Target_NDCG@50: 0.0241    
+06 Mar 20:39    INFO epoch 39 training [time: 2.89s, train loss: 249.8512]
+06 Mar 20:39    INFO epoch 39 evaluating [time: 3.50s, valid_score: 0.091800]
+06 Mar 20:39    INFO valid result: 
+recall@20: 0.0918    recall@50: 0.1528    ndcg@20: 0.0406    ndcg@50: 0.0528    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0260    map@50: 0.0279    Target_HR@20: 0.0377    Target_HR@50: 0.1494    Target_NDCG@20: 0.0094    Target_NDCG@50: 0.0380    
+06 Mar 20:39    INFO test result: 
+recall@20: 0.0938    recall@50: 0.1580    ndcg@20: 0.0421    ndcg@50: 0.0551    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0268    map@50: 0.0288    Target_HR@20: 0.0378    Target_HR@50: 0.1493    Target_NDCG@20: 0.0094    Target_NDCG@50: 0.0379    
+06 Mar 20:39    INFO epoch 40 training [time: 2.79s, train loss: 249.6287]
+06 Mar 20:40    INFO epoch 40 evaluating [time: 3.55s, valid_score: 0.091200]
+06 Mar 20:40    INFO valid result: 
+recall@20: 0.0912    recall@50: 0.1517    ndcg@20: 0.0407    ndcg@50: 0.0528    precision@20: 0.0048    precision@50: 0.0032    map@20: 0.0263    map@50: 0.0282    Target_HR@20: 0.0295    Target_HR@50: 0.1313    Target_NDCG@20: 0.0066    Target_NDCG@50: 0.0306    
+06 Mar 20:40    INFO test result: 
+recall@20: 0.0935    recall@50: 0.1563    ndcg@20: 0.0418    ndcg@50: 0.0546    precision@20: 0.0052    precision@50: 0.0035    map@20: 0.0264    map@50: 0.0284    Target_HR@20: 0.0296    Target_HR@50: 0.1311    Target_NDCG@20: 0.0066    Target_NDCG@50: 0.0307    
+06 Mar 20:40    INFO epoch 41 training [time: 3.95s, train loss: 249.6050]
+06 Mar 20:40    INFO epoch 41 evaluating [time: 3.56s, valid_score: 0.093300]
+06 Mar 20:40    INFO valid result: 
+recall@20: 0.0933    recall@50: 0.1550    ndcg@20: 0.0413    ndcg@50: 0.0536    precision@20: 0.0049    precision@50: 0.0033    map@20: 0.0264    map@50: 0.0283    Target_HR@20: 0.0386    Target_HR@50: 0.1565    Target_NDCG@20: 0.0092    Target_NDCG@50: 0.0403    
+06 Mar 20:40    INFO test result: 
+recall@20: 0.0946    recall@50: 0.1594    ndcg@20: 0.0424    ndcg@50: 0.0555    precision@20: 0.0052    precision@50: 0.0036    map@20: 0.0269    map@50: 0.0289    Target_HR@20: 0.0387    Target_HR@50: 0.1570    Target_NDCG@20: 0.0092    Target_NDCG@50: 0.0403    
+06 Mar 20:40    INFO epoch 42 training [time: 3.06s, train loss: 249.3304]
+06 Mar 20:40    INFO epoch 42 evaluating [time: 3.48s, valid_score: 0.093000]
+06 Mar 20:40    INFO valid result: 
+recall@20: 0.0930    recall@50: 0.1529    ndcg@20: 0.0412    ndcg@50: 0.0532    precision@20: 0.0049    precision@50: 0.0032    map@20: 0.0264    map@50: 0.0283    Target_HR@20: 0.0293    Target_HR@50: 0.1310    Target_NDCG@20: 0.0061    Target_NDCG@50: 0.0294    
+06 Mar 20:40    INFO test result: 
+recall@20: 0.0947    recall@50: 0.1589    ndcg@20: 0.0424    ndcg@50: 0.0554    precision@20: 0.0052    precision@50: 0.0036    map@20: 0.0269    map@50: 0.0289    Target_HR@20: 0.0293    Target_HR@50: 0.1307    Target_NDCG@20: 0.0061    Target_NDCG@50: 0.0294    
+06 Mar 20:40    INFO +++++Finished training, best eval result in epoch 21
+06 Mar 20:40    INFO best valid result: recall@20: 0.0941    recall@50: 0.1550    ndcg@20: 0.0414    ndcg@50: 0.0536    precision@20: 0.0050    precision@50: 0.0033    map@20: 0.0263    map@50: 0.0282    Target_HR@20: 0.0598    Target_HR@50: 0.2526    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    
+06 Mar 20:40    INFO test result: recall@20: 0.0959    recall@50: 0.1612    ndcg@20: 0.0431    ndcg@50: 0.0564    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0275    map@50: 0.0296    Target_HR@20: 0.0602    Target_HR@50: 0.2524    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    
+06 Mar 20:40    INFO ████Current BEST████:
+Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(999, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.0941    recall@50: 0.1550    ndcg@20: 0.0414    ndcg@50: 0.0536    precision@20: 0.0050    precision@50: 0.0033    map@20: 0.0263    map@50: 0.0282    Target_HR@20: 0.0598    Target_HR@50: 0.2526    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    ,
+Test: recall@20: 0.0959    recall@50: 0.1612    ndcg@20: 0.0431    ndcg@50: 0.0564    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0275    map@50: 0.0296    Target_HR@20: 0.0602    Target_HR@50: 0.2524    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    
+
+
+
+06 Mar 20:40    INFO 
+============All Over=====================
+06 Mar 20:40    INFO Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(999, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06),
+ best valid: recall@20: 0.0941    recall@50: 0.1550    ndcg@20: 0.0414    ndcg@50: 0.0536    precision@20: 0.0050    precision@50: 0.0033    map@20: 0.0263    map@50: 0.0282    Target_HR@20: 0.0598    Target_HR@50: 0.2526    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    ,
+ best test: recall@20: 0.0959    recall@50: 0.1612    ndcg@20: 0.0431    ndcg@50: 0.0564    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0275    map@50: 0.0296    Target_HR@20: 0.0602    Target_HR@50: 0.2524    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    
+06 Mar 20:40    INFO 
+
+█████████████ BEST ████████████████
+06 Mar 20:40    INFO 	Parameters: ['seed', 'n_ui_layers', 'n_mm_layers', 'n_hyper_layer', 'hyper_num', 'keep_rate', 'alpha', 'cl_weight', 'reg_weight']=(999, 2, 2, 1, 4, 0.5, 0.3, 0.0001, 1e-06),
+Valid: recall@20: 0.0941    recall@50: 0.1550    ndcg@20: 0.0414    ndcg@50: 0.0536    precision@20: 0.0050    precision@50: 0.0033    map@20: 0.0263    map@50: 0.0282    Target_HR@20: 0.0598    Target_HR@50: 0.2526    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    ,
+Test: recall@20: 0.0959    recall@50: 0.1612    ndcg@20: 0.0431    ndcg@50: 0.0564    precision@20: 0.0053    precision@50: 0.0036    map@20: 0.0275    map@50: 0.0296    Target_HR@20: 0.0602    Target_HR@50: 0.2524    Target_NDCG@20: 0.0148    Target_NDCG@50: 0.0664    
+
+
